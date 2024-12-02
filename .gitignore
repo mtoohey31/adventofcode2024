@@ -1,0 +1,6 @@
+/.direnv
+result
+
+/.lake
+/input/*
+!/input/*-example
