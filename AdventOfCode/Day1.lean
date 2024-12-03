@@ -5,7 +5,7 @@ def Array.collate [BEq α] [Ord α] [Inhabited α] (xs : Array α) : Array (α �
   let mut res := #[]
   for x in xs.qsortOrd do
     if .some x == prev then
-      let (_, n) := res.back!
+      let (_, n) := res.back?.get!
       res := res.set! (res.size - 1) (x, n + 1)
     else
       res := res.push (x, 1)
@@ -26,7 +26,7 @@ def part1 (input : String) := do
   let pairs ← parse input
   let (lefts, rights) := pairs.unzip
   let sortedPairs := lefts.qsortOrd.zip rights.qsortOrd
-  return List.sum <| Array.toList <| sortedPairs.map fun (x, y) => Int.natAbs (x - y)
+  return Nat.sum <| Array.toList <| sortedPairs.map fun (x, y) => Int.natAbs (x - y)
 
 #assert part1 with "Day1-example" is some 11
 
