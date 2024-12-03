@@ -1,4 +1,5 @@
 import AdventOfCode.Basic
+import AssignOps
 
 def List.pairs : List α → List (α × α)
   | [] => []
@@ -34,7 +35,7 @@ where
       let prev := xs[i - 1]!
       let curr := xs[i]!
       if inRange (prev, curr) then
-        i := i + 1
+        i += 1
         continue
 
       if oneBad then

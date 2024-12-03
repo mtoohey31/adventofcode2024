@@ -1,4 +1,5 @@
 import AdventOfCode.Basic
+import AssignOps
 
 def Array.collate [BEq α] [Ord α] [Inhabited α] (xs : Array α) : Array (α × Nat) := Id.run do
   let mut prev : Option α := none
@@ -43,7 +44,7 @@ def part2 (input : String) := do
     let some (right, rightCount) := collatedRight.back? | return score
     if left <= right then
       if left == right then
-        score := score + left * leftCount * rightCount
+        score += left * leftCount * rightCount
         collatedLeft := collatedLeft.pop
       collatedRight := collatedRight.pop
     else

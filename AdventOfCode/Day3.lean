@@ -1,4 +1,5 @@
 import AdventOfCode.Basic
+import AssignOps
 import Regex
 
 namespace AdventOfCode
@@ -27,7 +28,7 @@ def part2 (input : String) := Id.run do
   for capture in Regex.all_captures input re do
     if enabled then
       if let some n := evalMul capture then
-        sum := sum + n
+        sum += n
       else if capture.fullMatch.bsize == 7 then
         enabled := false
     else if capture.fullMatch.bsize == 4 then
