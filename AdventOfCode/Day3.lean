@@ -15,7 +15,7 @@ def evalMul (c : Captures) : Option Nat := do
 
 def part1 (input : String) :=
   let re := regex% r"mul\((\d+),(\d+)\)"
-  Regex.all_captures input re |>.mapM evalMul <&> Array.foldl Add.add 0
+  all_captures input re |>.mapM evalMul <&> Array.foldl Add.add 0
 
 #assert part1 with "Day3-example" is some 161
 
@@ -25,7 +25,7 @@ def part2 (input : String) := Id.run do
   let re := regex% r"mul\((\d+),(\d+)\)|do\(\)|don't\(\)"
   let mut sum := 0
   let mut enabled := true
-  for capture in Regex.all_captures input re do
+  for capture in all_captures input re do
     if enabled then
       if let some n := evalMul capture then
         sum += n

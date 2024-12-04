@@ -28,10 +28,7 @@ where
     let mut oneBad := false
     let mut xs := xs
     let mut i := 1
-    repeat
-      if i == xs.size then
-        break
-
+    while i < xs.size do
       let prev := xs[i - 1]!
       let curr := xs[i]!
       if inRange (prev, curr) then
